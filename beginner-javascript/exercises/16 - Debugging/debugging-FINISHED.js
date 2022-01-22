@@ -22,7 +22,7 @@ console.table(people);
 
 // Breakpoints
 
-// Scope
+// Scope - tested
 
 // Network Requests
 
