@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>HTML Forms</title>
+  <link rel="stylesheet" href="calculator.css" media ="screen"type = "text/css"/>
+</head>
+<body>
+    <div class = "center">
+        <table>
+            <tr>
+                <td colspan="10">
+                    <input class = "display" name = "display" type = "text" id = "display"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <input type = "button"  value = "(" onclick="Dis ('(')"/>
+
+                </td>
+                <td>
+                     <input  type = "button" value = ")"  onclick="Dis(')')"/>
+                </td>
+                <td>
+                     <input  type = "button" value = "CE" onclick="Clr ()" />
+                </td>
+                <td>
+                     <input  type = "button" value  = "%" onclick="Dis('%')"/>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                     <input type  = "button"  value = "1" onclick="Dis ('1')"/>
+                </td>
+                <td>
+                    <input  type = "button" value = "2" onclick="Dis('2')"/>
+                    
+                </td>
+                <td>
+                    <input type = "button"  value = "3" onclick="Dis('3')"/>
+                </td>
+                <td>
+                    <input type = "button" value = "+" onclick="Dis('+')"/>
+                </td>
+            </tr>  
+            <tr>
+                <td>
+                    <input  type = "button"  value = "4" onclick="Dis('4')"/>
+                </td>
+                <td>
+                    <input  type = "button" value = "5" onclick="Dis('5')"/>
+                </td>
+                <td>
+                <input type = "button"  value = "6" onclick="Dis('6')"/>
+            </td>
+            
+                <td>
+                    <input  type = "button"  value = "-" onclick="Dis('-')"/>
+                </td>
+             </tr>
+             <tr>
+               <td>
+                    <input type = "button"  value = "7" onclick="Dis('7')"/>
+                </td>
+                <td>
+                <input type = "button"  value = "8" onclick="Dis('8')"/>
+            </td>
+            <td>
+            <input type = "button"  value = "9" onclick="Dis('9')"/>
+             </td>
+             <td>
+                    <input type = "button"value = "*" onclick="Dis('*')"/>
+                </td>
+                
+             </tr>
+             <tr>
+                <td>
+                <input type = "button" value = "0" onclick="dis('0')"/>
+             </td>
+             <td>
+                    <input  type = "button"  value = "." onclick="Dis('.')"/>
+                </td>
+                <td>
+                <input type = "button" value = "=" onclick="solve()"/>
+            </td>
+            <td>
+            <input  type = "button"  value = "/" onclick="Dis('/')"/>
+        </td>
+     </tr>
+
+
+
+
+
+
+
+
+
+
+
+<script src ="calculator.js" ></script>
+
+        </table>
+    </div>
+</body>
+</html>

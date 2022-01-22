@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+<script>
+  //function outer (){
+    //const outerVar = 'hey i am at outer var';
+    //function inner (){
+   //   const innerVar = 'hey iam at inner var';
+   //   console.log(innerVar);
+   ///
+   //   console.log(outerVar);
+
+   // }
+   // return inner ;
+
+ // }
+  
+   // const innerfm = outer();
+   // innerfm();
+  
+ //function createGreeting(greeting = ''){
+   //const myGreet = greeting.toUpperCase();
+   //return function (name){
+   //  return `${myGreet} ${name}`;
+ //  }
+// }
+
+
+ // const sayHello = createGreeting('hello');
+ // const sayHey = createGreeting('hey');
+ // console.log(sayHello('wes'));
+ // console.log(sayHello('kait'));
+ // console.log (sayHey('prima'));
+
+  function createGame(gameName){
+    let score = 0;
+    return function win() {
+      
+      return `your name ${gameName} score is ${score}`;
+      score++;
+    }
+  }
+  const hockeyGame = createGame('hockey');
+  
+    
+</script>
+</body>
+
+</html>
