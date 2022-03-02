@@ -5,8 +5,8 @@ import Product from './Product';
 // import formatMoney from '../lib/formatMoney';
 
 export const ALL_PRODUCT_QUERY = gql`
-  query ALL_PRODUCT_QUERY {
-    allProducts {
+  query ALL_PRODUCT_QUERY($skip: Int = 0, $first: Int) {
+    allProducts(skip: $skip, first: $first) {
       id
       name
       price

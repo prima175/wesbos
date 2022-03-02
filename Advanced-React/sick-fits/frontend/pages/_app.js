@@ -10,25 +10,24 @@ Router.events.on('routeChangeStart', () => Nprogress.start());
 Router.events.on('routeChangeComplete', () => Nprogress.done());
 Router.events.on('routeChangeError', () => Nprogress.start());
 
-function MyApp({ Component, pageProps ,apollo}) {
+function MyApp({ Component, pageProps, apollo }) {
   console.log(apollo);
   return (
-    <ApolloProvider client ={apollo}>
+    <ApolloProvider client={apollo}>
       <Page>
         <Component {...pageProps} />
       </Page>
-     </ApolloProvider>
+    </ApolloProvider>
   );
 }
-MyApp.getInitialProps  = async function ({component,ctx}){
-  let pageProps ={};
-    if (Component.getInitialProps){
-      pageProps= await Component.getInitialProps(ctx);
-    }
-    pageProps.query =ctx.query;
-    return {
-      pageProps
-    }
-  
-}
- export default withData(MyApp)                                                                 
+MyApp.getInitialProps = async function ({ component, ctx }) {
+  let pageProps = {};
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+  pageProps.query = ctx.query;
+  return {
+    pageProps,
+  };
+};
+export default withData(MyApp);

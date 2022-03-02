@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
+import Router from 'next/router';
 import useForm from '../lib/useForm';
 import Form from './styles/Form';
 import DisplayError from './ErrorMessage';
@@ -66,9 +67,12 @@ export default function CreateProduct() {
       onSubmit={async (e) => {
         e.preventDefault();
         console.log(inputs);
-        const res = await createProduct();
+        const res = await createProduct(); // submit the inputfields to the backend
         console.log(res);
         clearForm();
+        Router.push({
+          pathname: `/product/${res.data.createProduct.id}`,
+        });
       }}
     >
       <DisplayError error={error} />
@@ -116,12 +120,7 @@ export default function CreateProduct() {
             onChange={handleChange}
           />
         </label>
-        {/* <button type="button" onClick={clearForm}>
-        Clear Form
-      </button>
-      <button type="button" onClick={resetForm}>
-        Reset Form
-      </button> */}
+
         <button type="submit"> +Add product</button>
       </fieldset>
     </Form>
