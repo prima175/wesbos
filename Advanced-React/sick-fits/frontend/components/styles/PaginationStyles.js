@@ -7,13 +7,14 @@ const PaginationStyles = styled.div`
   align-items: stretch;
   justify-content: center;
   align-content: center;
-  margin: 2rem 0;
-  border: 1px solid var(--Gray);
+  margin: 4rem 0;
+  border: 1px solid var(--lightGray);
   border-radius: 10px;
   & > * {
     margin: 0;
     padding: 15px 30px;
     border-right: 1px solid var(--lightgray);
+
     &:last-child {
       border-right: 0;
     }

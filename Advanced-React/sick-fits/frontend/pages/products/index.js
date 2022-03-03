@@ -5,7 +5,7 @@ import Products from '../../components/Products';
 export default function OrderPage() {
   const { query } = useRouter();
   // console.log(router);
-  console.log(typeof query.page);
+  console.log(query.page);
   const page = parseInt(query.page); // string console e blue colour e represent kore
   return (
     <div>

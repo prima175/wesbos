@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Product from './Product';
+import { perPage } from '../config';
 // import formatMoney from '../lib/formatMoney';
 
 export const ALL_PRODUCT_QUERY = gql`
@@ -25,8 +26,14 @@ const ProductListStyles = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 60px;
 `;
-export default function Products() {
-  const { data, error, loading } = useQuery(ALL_PRODUCT_QUERY);
+export default function Products({ page }) {
+  const { data, error, loading } = useQuery(ALL_PRODUCT_QUERY, {
+    variables: {
+      skip: page * perPage - perPage, // bujhi nai
+      first: perPage,
+      // by first we defined how many products per page .....
+    },
+  });
   //   console.log(data, error, loading);
   if (loading) return <p>Loading....</p>;
   if (error) return <p> Error:{error.message}</p>;
