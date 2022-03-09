@@ -1,29 +1,36 @@
-import { config, createSchema } from "@keystone-next/keystone/schema";
-import { createAuth } from "@keystone-next/auth";
-import "dotenv/config";
+import { config, createSchema } from '@keystone-next/keystone/schema';
+import { createAuth } from '@keystone-next/auth';
+import 'dotenv/config';
 import {
   withItemData,
   statelessSessions,
-} from "@keystone-next/keystone/session";
-import { Product } from "./schemas/Product";
+} from '@keystone-next/keystone/session';
+import { Product } from './schemas/Product';
 
-import { User } from "./schemas/User";
-import { ProductImage } from "./schemas/ProductImage";
-import { insertSeedData } from "./seed-data";
+import { User } from './schemas/User';
+import { ProductImage } from './schemas/ProductImage';
+import { insertSeedData } from './seed-data';
+import { sendPasswordResetEmail } from './lib/mail';
 
 const databaseURL =
-  process.env.DATABASE_URL || "mongodb://localhost/keystone-sick-fits-tutorial";
+  process.env.DATABASE_URL || 'mongodb://localhost/keystone-sick-fits-tutorial';
 
 const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360,
   secret: process.env.COOKIE_SECRET,
 };
 const { withAuth } = createAuth({
-  listKey: "User",
-  identityField: "email",
-  secretField: "password",
+  listKey: 'User',
+  identityField: 'email',
+  secretField: 'password',
   initFirstItem: {
-    fields: ["name", "email", "password"],
+    fields: ['name', 'email', 'password'],
+  },
+  passwordResetLink: {
+    async sendToken(args) {
+      // console.log(args);
+      await sendPasswordResetEmail(args.token, args.identity);
+    },
   },
 });
 export default withAuth(
@@ -35,11 +42,11 @@ export default withAuth(
       },
     },
     db: {
-      adapter: "mongoose",
+      adapter: 'mongoose',
       url: databaseURL, // add data here
       async onConnect(keystone) {
-        console.log("conncted");
-        if (process.argv.includes("--seed-data")) {
+        console.log('conncted');
+        if (process.argv.includes('--seed-data')) {
           await insertSeedData(keystone);
         }
       },
@@ -56,7 +63,7 @@ export default withAuth(
       },
     },
     session: withItemData(statelessSessions(sessionConfig), {
-      User: "id",
+      User: 'id',
     }),
   })
 );
