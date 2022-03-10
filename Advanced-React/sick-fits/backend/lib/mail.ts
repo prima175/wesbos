@@ -1,3 +1,4 @@
+// import { getFontDefinitionFromManifest } from 'next/dist/next-server/server/font-utils';
 import { createTransport, getTestMessageUrl } from 'nodemailer';
 
 const transport = createTransport({
@@ -8,6 +9,7 @@ const transport = createTransport({
     pass: process.env.MAIL_PASS,
   },
 });
+
 function makeANiceEmail(text: string) {
   return `
      <div  
@@ -50,11 +52,11 @@ export async function sendPasswordResetEmail(
     to,
     from: 'primadhar175@gmail.com',
     subject: 'your password reset token',
-    html: makeANiceEmail(`your password  reset token is here!
-    <a href ="${process.env.FRONTEND_URL}/reset?token=${resetToken}">click here to reset</a>`),
+    html: makeANiceEmail(`your password reset token is here
+    <a href="${process.env.FRONTEND_URL}/reset?token=${resetToken}">click here to reset</a>`),
   })) as MailResponse;
-  console.log(info);
   if (process.env.MAIL_USER.includes('ethereal.email')) {
-    console.log(`message sent!preview at ${getTestMessageUrl(info)}`);
+    console.log(`message sent  preview it at ${getTestMessageUrl(info)}`);
   }
+  // console.log(info);
 }
