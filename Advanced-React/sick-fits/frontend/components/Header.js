@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import Nav from './Nav';
+import Cart from './Cart';
+import Search from './Search';
 
 const Logo = styled.h1`
-  font-size: 2rem;
+  font-size: 3rem;
   margin-left: 3rem;
   position: relative;
   z-index: 4;
@@ -12,7 +14,7 @@ const Logo = styled.h1`
 
   a {
     color: white;
-    text-decoration: none;
+    /* text-decoration: none; */
     text-transform: uppercase;
     padding: 0.5rem 1rem;
   }
@@ -41,10 +43,10 @@ export default function Header() {
         </Logo>
         <Nav />
       </div>
-      <div className="sub-bar">
-        <p> search</p>
-      </div>
+      <div className="sub-bar">{/* <Search /> */}</div>
       {/* <Nav /> */}
+      <Search />
+      <Cart />
     </Headerstyles>
   );
 }
